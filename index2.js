@@ -16,7 +16,7 @@ cards.forEach((card)=>{
 
  
     if(text.length === 0 && isFlip ){
-       
+         console.log("this", this.innerText)
         text = this.innerText
 
     }else if((text === this.innerText) && isFlip  ){
