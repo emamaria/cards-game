@@ -1,15 +1,15 @@
 var cards = document.querySelectorAll('.card');
 // cuando le das la vuelta, se añade el is-flipped true
 let text = ""
-// let flipNum = []
+let flipNum = []
 
 cards.forEach((card)=>{
   card.addEventListener( 'click', function() {
-  //  if(flipNum.length === 2 ){
-  //   console.log("dos", this.classList[1] )
-  //   alert("only 2 cards")
-  //   return
-  //  }
+   if(flipNum.length === 2 ){
+    console.log("dos", this.classList[1] )
+    console.log("hahaha")
+    return
+   }
 
  
     card.classList.toggle('is-flipped');
@@ -20,9 +20,9 @@ cards.forEach((card)=>{
   console.log(list[1])
   let isFlip = (list[1] === 'is-flipped') && true
 
-  // flipNum.push(isFlip)
+  flipNum.push(isFlip)
 
-  // console.log(flipNum.length)
+  console.log(flipNum.length)
   console.log(isFlip)
 
  
@@ -48,7 +48,8 @@ cards.forEach((card)=>{
             let flippedCards = document.querySelectorAll(".is-flipped")
            
             flippedCards.forEach( card => card.classList.remove("is-flipped"))
-            
+            //reseteo para volver a voltear
+            flipNum = [] 
           console.log("incorrecto", flippedCards.length)
             
         }, 2000)
