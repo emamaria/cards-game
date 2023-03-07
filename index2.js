@@ -7,7 +7,7 @@ cards.forEach((card)=>{
   card.addEventListener( 'click', function() {
    if(flipNum.length === 2 ){
     console.log("dos", this.classList[1] )
-    console.log("hahaha")
+    console.log("here")
     return
    }
 
@@ -35,7 +35,11 @@ cards.forEach((card)=>{
         text = ""
         setTimeout(()=>{
             alert("igual")
+            let flippedCards = document.querySelectorAll(".is-flipped")
+            flippedCards.forEach(card => card.remove())
           //si son iguales, eliminar esas cartas del html
+          //reseteo para volver a voltear
+        flipNum = [] 
         }, 2000)
        
     }else if((text !== this.innerText) && isFlip){
@@ -46,13 +50,15 @@ cards.forEach((card)=>{
          //dentro del dom tomo todos los elementos y le elimino la clase 
          //is-flipped a aquellos que tienen el is-flipped
             let flippedCards = document.querySelectorAll(".is-flipped")
-           
+           console.log(flippedCards)
             flippedCards.forEach( card => card.classList.remove("is-flipped"))
-            //reseteo para volver a voltear
-            flipNum = [] 
+           //reseteo para volver a voltear
+         flipNum = [] 
           console.log("incorrecto", flippedCards.length)
             
         }, 2000)
     }
+
+     
   });
 });
