@@ -2,6 +2,11 @@
 // creo un array de las cartas de assets y uso ese array para mapear y 
 // añadir los cambios
 
+let time =  []
+
+
+
+
 let cardsList = [
   "2C", "2D", "2H", "2S",
   "3C", "3D", "3H", "3S",
@@ -54,6 +59,15 @@ shuffledCards.forEach(card =>{
 }
   )
 
+let userName = prompt("Hello, whats´s your name ?")
+
+confirm(`Nice to meet you ${userName}!`)
+
+let messageContainer = document.querySelector(".message-container")
+
+messageContainer.innerHTML = `
+<h1 class="player-container" >Player Name : ${userName[0].toUpperCase()}${userName.substring(1)}</h1>
+`
 
 
 var cards = document.querySelectorAll('.card');
