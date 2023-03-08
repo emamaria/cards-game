@@ -1,4 +1,9 @@
-body { font-family: sans-serif; }
+body {
+   font-family: sans-serif;
+   background-color: #35654d;
+
+
+}
 
 .scene {
   display: inline-block;
@@ -43,3 +48,5 @@ body { font-family: sans-serif; }
   background: slateblue;
   transform: rotateY(180deg);
 }
+
+
