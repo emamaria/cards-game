@@ -105,28 +105,36 @@ cards.forEach((card)=>{
         text = this.innerText
 
     }else if((text === this.innerText) && isFlip  ){
-
+      messageContainer.innerHTML += `
+      <h1 class="ok-message">Great!</h1>
+      `
         text = ""
         setTimeout(()=>{
-            alert("igual")
+            // alert("igual")
             let flippedCards = document.querySelectorAll(".is-flipped")
             flippedCards.forEach(card => card.remove())
           //si son iguales, eliminar esas cartas del html
           //reseteo para volver a voltear
-        
+          document.querySelector(".ok-message").remove()
         flipNum = [] 
         }, 2000)
        
     }else if((text !== this.innerText) && isFlip){
         text = ""
+        messageContainer.innerHTML += `
+           <h1 class="failed-message">sorry not match!</h1>
+           `
+           console.log( messageContainer)
         setTimeout(()=>{
            
-            alert("incorrecto")
+            // alert("incorrecto")
          //dentro del dom tomo todos los elementos y le elimino la clase 
          //is-flipped a aquellos que tienen el is-flipped
             let flippedCards = document.querySelectorAll(".is-flipped")
            console.log(flippedCards)
             flippedCards.forEach( card => card.classList.remove("is-flipped"))
+
+            document.querySelector(".failed-message").remove()
            //reseteo para volver a voltear
          flipNum = [] 
           console.log("incorrecto", flippedCards.length)
