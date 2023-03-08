@@ -64,8 +64,7 @@ let flipNum = []
 cards.forEach((card)=>{
   card.addEventListener( 'click', function() {
 
-    let count = document.querySelectorAll(".count")
-    console.log("numero cartas", count.length)
+  
    if(flipNum.length === 2 ){
     console.log("dos", this.classList[1] )
     console.log("here")
@@ -100,8 +99,7 @@ cards.forEach((card)=>{
             flippedCards.forEach(card => card.remove())
           //si son iguales, eliminar esas cartas del html
           //reseteo para volver a voltear
-          let count = document.querySelectorAll(".count")
-          console.log("numero cartas", count.length)
+        
         flipNum = [] 
         }, 2000)
        

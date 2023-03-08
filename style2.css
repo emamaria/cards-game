@@ -5,6 +5,8 @@ body {
 
 }
 
+
+
 .scene {
   display: inline-block;
   width: 200px;
@@ -53,5 +55,6 @@ body {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  justify-content: center;
+  justify-content: space-around;
+  margin: 10px;
 }
