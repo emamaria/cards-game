@@ -75,8 +75,10 @@ var cards = document.querySelectorAll('.card');
 let text = ""
 let flipNum = []
 
-cards.forEach((card)=>{
-  card.addEventListener( 'click', function() {
+ cards.forEach((card)=>{
+
+  
+      card.addEventListener( 'click', function() {
 
   
    if(flipNum.length === 2 ){
@@ -87,7 +89,11 @@ cards.forEach((card)=>{
 
  
     card.classList.toggle('is-flipped');
- console.log(card)
+    
+    
+    
+    
+ console.log("tarjeta", card)
 
   let list =  this.classList
 
@@ -144,4 +150,6 @@ cards.forEach((card)=>{
 
      
   });
+  
+
 });
