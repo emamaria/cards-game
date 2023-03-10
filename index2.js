@@ -103,6 +103,10 @@ var cards = document.querySelectorAll('.card');
         flippedCards.forEach(card => card.remove())
          
           document.querySelector(".ok-message").remove()
+          //turno pc
+          setTimeout(()=>{
+            pcTurn()
+          }, 2000)
        
         }, 2000)
 
@@ -117,6 +121,10 @@ var cards = document.querySelectorAll('.card');
     console.log(flippedCards)
     flippedCards.forEach( card => card.classList.remove("is-flipped"))
     document.querySelector(".failed-message").remove()
+      //turno pc
+    setTimeout(()=>{
+      pcTurn()
+    }, 2000)
             
                 }, 2000)
   
@@ -132,3 +140,63 @@ var cards = document.querySelectorAll('.card');
 
 });
 
+
+//jugada pc
+
+//primero hago aleatoriamente que salga 0 o 1 si sale 1 el pc da vueltas
+//a dos cartas aleatoriamente si sale 0 toma dos iguales , durante el 
+//juego de pc desactivar click de las cartas una vez terminado, activar
+
+function pcTurn(){
+
+  //para que la probailidad de acertar por pate del pc sea más baja pongo
+  //a un 25% de posibilidad de acertar poniendo 5 numeros si 0 ó 1 ó  2 ó 3
+  //es aleatorio si es 4 encuentra la pareja
+ let randomOrMatch = Math.floor(Math.random() * 5);
+
+ console.log("random", randomOrMatch)
+
+ //tiene probabilidad de 0 1 ó 2
+ if(randomOrMatch <= 3){
+   
+  console.log("aleatorio")
+
+  //miro el numero de tarjetas que queda en dom los tomo miro cuantos son con 
+  //length y sumo 1 .con ese length + 1 hago un ramdon que me saque de 0 a length + uno
+  //lo busco del array y lo saco y lo almaceno en variable llamado carta1 y le doy la vuelta luego con el 
+  //array de cartas que queda hago otro random entre 0 y ese array length mas uno y segun la posicion que salga le doy la
+  //vuelta y almaceno ese
+  //carta segun la posicion en que este en una variable y comparo el innerText si es igual los elimino
+  //si no les vuelvo a voltear
+
+  let leftCards =  document.querySelectorAll('.card');
+
+  console.log("randon left cards", leftCards,leftCards.length)
+  //para tener en cuenta el 0 del array y me cuente de 0 al último elmento del array 
+  let leftCardsPlusOne = leftCards.length + 1
+
+  //para que salga en random de 0 al ultimo número de posicion sumo 1 a la longitud del array
+
+  let randomNum =  leftCardsPlusOne + 1;
+
+  console.log("tarjetas que quedan mas 1", leftCardsPlusOne)
+
+  let randomCardPosition = Math.floor(Math.random() * randomNum);
+
+  console.log("posicion  cartas aleatorias pc", randomCardPosition )
+
+
+
+ }else if(randomOrMatch === 4){
+
+  //busco en el array de cartas de forma aleatoria una carta miro el numeor que tiene le doy la vuelta
+  //y busco otra carta del mismo numero en el array de cartas y el primero que encuentre en el array
+  //le doy la vuelta y los elimino porque son iguales
+  console.log("iguales")
+
+  let leftCards =  document.querySelectorAll('.card');
+
+  console.log("match left cards", leftCards,leftCards.length)
+ }
+
+}
