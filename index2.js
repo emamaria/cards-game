@@ -51,7 +51,7 @@ shuffledCards.forEach(card =>{
         <img
           class="card__face card__face--back purple"
           src="./cartas/${card}.png"
-          alt="${card.slice(0, card.length - 1)}"
+          alt="${card}"
         />"${card.slice(0, card.length - 1)}"
       </div>
     </div>
@@ -211,10 +211,16 @@ function pcTurn(){
 
  let card2 = leftCardsCopy[randomCardPosition1]
 
- card2.classList.add('is-flipped');
+ console.log("card2", card2.innerText)
 
- console.log("carta 2", card2)
+ setTimeout(()=>{
+      //debo añadir el is-flipped al dom real no a la copia
+    card2.classList.add('is-flipped');
+ },1000)
 
+ //card2.lastElementChild.alt
+ 
+ ///aqui pasa algo
  let card2Type = card2.innerText
 
  if(card1Type === card2Type){
@@ -253,10 +259,48 @@ function pcTurn(){
   //y busco otra carta del mismo numero en el array de cartas y el primero que encuentre en el array
   //le doy la vuelta y los elimino porque son iguales
   console.log("iguales")
+  return
 
   let leftCards =  document.querySelectorAll('.card');
 
   console.log("match left cards", leftCards,leftCards.length)
+
+  let leftCardsCopy =  [...leftCards]
+
+  console.log("randon left cards", leftCards,leftCards.length)
+  //para tener en cuenta el 0 del array y me cuente de 0 al último elmento del array 
+  let leftCardsPlusOne = leftCardsCopy.length + 1
+
+  //para que salga en random de 0 al ultimo número de posicion sumo 1 a la longitud del array
+
+  let randomNum =  leftCardsPlusOne + 1;
+
+  console.log("tarjetas que quedan mas 1", leftCardsPlusOne)
+
+  let randomCardPosition = Math.floor(Math.random() * randomNum);
+
+  console.log("posicion  cartas aleatorias pc", randomCardPosition )
+
+ let card1 = leftCardsCopy[randomCardPosition]
+
+ card1.classList.add('is-flipped');
+
+ console.log("carta 1", card1)
+
+ let card1Type = card1.innerText
+
+ console.log("tipo card 1", card1Type)
+
+ leftCardsCopy.splice(randomCardPosition, 1)
+  //busco de las tarjetas que quedan el mismo tipo que el que saqué en aleatorio
+  //y el primero que encuentre será el que haré flip y despues aliminare del deck
+  //para buscar el mismo en el array del dom debo buscar elemento con el mismo src
+ let matchingCard = leftCardsCopy.find(card => {
+  console.log(card.innerText, card1Type )
+  // card.innerText === card1Type
+ })
+
+ console.log("tarjetas iguales", matchingCard)
  }
 
 }
