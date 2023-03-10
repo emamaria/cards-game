@@ -41,8 +41,8 @@ shuffledCards.forEach(card =>{
   
   cardsContainer.innerHTML += `
 
-<div class="scene scene--card count">
-      <div class="card">
+<div class="scene scene--card count" >
+      <div class="card" id=${card.toLowerCase()}>
        <img
           class="card__face card__face--front"
           src="./cartas/red_back.png"
@@ -51,8 +51,8 @@ shuffledCards.forEach(card =>{
         <img
           class="card__face card__face--back purple"
           src="./cartas/${card}.png"
-          alt="${card}"
-        />"${card.slice(0, card.length - 1)}"
+          alt="${card.toLowerCase()}"
+        />"${card.slice(0, card.length - 1).toLowerCase()}"
       </div>
     </div>
 `
@@ -172,46 +172,35 @@ function pcTurn(){
   let leftCards =  document.querySelectorAll('.card');
 
   let leftCardsCopy =  [...leftCards]
-
-  console.log("randon left cards", leftCards,leftCards.length)
-  //para tener en cuenta el 0 del array y me cuente de 0 al último elmento del array 
-  let leftCardsPlusOne = leftCardsCopy.length + 1
+ 
+  let leftCardsPlusOne = leftCardsCopy.length 
 
   //para que salga en random de 0 al ultimo número de posicion sumo 1 a la longitud del array
 
   let randomNum =  leftCardsPlusOne + 1;
 
-  console.log("tarjetas que quedan mas 1", leftCardsPlusOne)
-
   let randomCardPosition = Math.floor(Math.random() * randomNum);
 
-  console.log("posicion  cartas aleatorias pc", randomCardPosition )
-
+console.log("cartas que quedan", leftCards)
+console.log("posicion random", randomCardPosition )
  let card1 = leftCardsCopy[randomCardPosition]
-
+//otra vez error not read property of undefined
  card1.classList.add('is-flipped');
-
- console.log("carta 1", card1)
 
  let card1Type = card1.innerText
  
- console.log("tipo tarjeta 1", card1Type)
 
  leftCardsCopy.splice(randomCardPosition, 1)
       
- console.log("removed array length", leftCardsCopy.length)
 
- let leftCardsCopyPlusOne = leftCardsCopy.length + 1
+ let leftCardsCopyPlusOne = leftCardsCopy.length 
 
  let randomNumSecond =  leftCardsCopyPlusOne + 1
-
- console.log("second random length", randomNumSecond)
 
  let randomCardPosition1 = Math.floor(Math.random() * randomNumSecond);
 
  let card2 = leftCardsCopy[randomCardPosition1]
 
- console.log("card2", card2.innerText)
 
  setTimeout(()=>{
       //debo añadir el is-flipped al dom real no a la copia
@@ -259,7 +248,7 @@ function pcTurn(){
   //y busco otra carta del mismo numero en el array de cartas y el primero que encuentre en el array
   //le doy la vuelta y los elimino porque son iguales
   console.log("iguales")
-  return
+
 
   let leftCards =  document.querySelectorAll('.card');
 
@@ -268,8 +257,8 @@ function pcTurn(){
   let leftCardsCopy =  [...leftCards]
 
   console.log("randon left cards", leftCards,leftCards.length)
-  //para tener en cuenta el 0 del array y me cuente de 0 al último elmento del array 
-  let leftCardsPlusOne = leftCardsCopy.length + 1
+ 
+  let leftCardsPlusOne = leftCardsCopy.length
 
   //para que salga en random de 0 al ultimo número de posicion sumo 1 a la longitud del array
 
@@ -281,6 +270,7 @@ function pcTurn(){
 
   console.log("posicion  cartas aleatorias pc", randomCardPosition )
 
+  console.log("random posiction bug", randomCardPosition)
  let card1 = leftCardsCopy[randomCardPosition]
 
  card1.classList.add('is-flipped');
@@ -290,17 +280,46 @@ function pcTurn(){
  let card1Type = card1.innerText
 
  console.log("tipo card 1", card1Type)
+ console.log("left card copy length antes",leftCardsCopy.length)
 
- leftCardsCopy.splice(randomCardPosition, 1)
+   leftCardsCopy.splice(randomCardPosition, 1)
+
   //busco de las tarjetas que quedan el mismo tipo que el que saqué en aleatorio
   //y el primero que encuentre será el que haré flip y despues aliminare del deck
   //para buscar el mismo en el array del dom debo buscar elemento con el mismo src
- let matchingCard = leftCardsCopy.find(card => {
-  console.log(card.innerText, card1Type )
-  // card.innerText === card1Type
- })
+ 
+  // del  leftCardsCopy busco todos los elementos que tengan card1Type y de ahí
+  //miro el de la primera posicion que id tiene y voy al dom original y elimino 
+  //elemento de ese id
 
- console.log("tarjetas iguales", matchingCard)
+ 
+  console.log("left card copy length despues",leftCardsCopy.length)
+
+  let matchedCards = leftCardsCopy.filter( card => card.innerText  === card1Type)
+
+ console.log("tarjetas iguales", matchedCards)
+
+ let  flippingCardId = matchedCards[0].lastElementChild.alt
+
+ console.log("id de carta a eliminar", flippingCardId)
+
+ let  flippingCard = document.getElementById(flippingCardId)
+
+ setTimeout(()=>{
+  flippingCard.classList.add('is-flipped');
+ }, 1000)
+
+
+ setTimeout(()=>{
+  let flippedCards = document.querySelectorAll(".is-flipped")
+  flippedCards.forEach(card => card.remove())
+   
+    // document.querySelector(".ok-message").remove()
+    //turno pc
+ 
+  }, 2000)
+
+ 
  }
 
 }
