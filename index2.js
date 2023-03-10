@@ -1,4 +1,5 @@
 
+
 // creo un array de las cartas de assets y uso ese array para mapear y 
 // añadir los cambios
 
@@ -59,97 +60,75 @@ shuffledCards.forEach(card =>{
 }
   )
 
-let userName = prompt("Hello, whats´s your name ?")
 
-confirm(`Nice to meet you ${userName}!`)
 
 let messageContainer = document.querySelector(".message-container")
 
-messageContainer.innerHTML = `
-<h1 class="player-container" >Player Name : ${userName[0].toUpperCase()}${userName.substring(1)}</h1>
-`
 
 
 var cards = document.querySelectorAll('.card');
 // cuando le das la vuelta, se añade el is-flipped true
-let text = ""
-let flipNum = []
 
- cards.forEach((card)=>{
+  cards.forEach((card)=>{
+   
 
-  
-      card.addEventListener( 'click', function() {
-
-  
-   if(flipNum.length === 2 ){
-    console.log("dos", this.classList[1] )
-    console.log("here")
-    return
-   }
-
- 
-    card.classList.toggle('is-flipped');
+   
+   
     
-    
-    
-    
- console.log("tarjeta", card)
+    card.addEventListener( 'click', function() {
 
-  let list =  this.classList
+      
 
-  console.log(list[1])
-  let isFlip = (list[1] === 'is-flipped') && true
+      console.log("tarjetas con flip length", document.querySelectorAll(".is-flipped").length)
+      if(document.querySelectorAll(".is-flipped").length < 2){
+      card.classList.add('is-flipped');
+      
+       console.log("tarjeta", card)
 
-  flipNum.push(isFlip)
-
-  console.log(flipNum.length)
-  console.log(isFlip)
-
- 
-    if(text.length === 0 && isFlip ){
-         console.log("this", this.innerText)
-        text = this.innerText
-
-    }else if((text === this.innerText) && isFlip  ){
-      messageContainer.innerHTML += `
+      if(document.querySelectorAll(".is-flipped").length === 2){
+    console.log("hello")
+  console.log("tarjeta 1 flipeada", document.querySelectorAll(".is-flipped")[0].innerText)
+  console.log("tarjeta 2 flipeada", document.querySelectorAll(".is-flipped")[1].innerText)
+    let card1 = document.querySelectorAll(".is-flipped")[0].innerText
+    let card2 = document.querySelectorAll(".is-flipped")[1].innerText
+  if(card1 === card2){
+    console.log("bien")
+     messageContainer.innerHTML += `
       <h1 class="ok-message">Great!</h1>
       `
-        text = ""
-        setTimeout(()=>{
-            // alert("igual")
-            let flippedCards = document.querySelectorAll(".is-flipped")
-            flippedCards.forEach(card => card.remove())
-          //si son iguales, eliminar esas cartas del html
-          //reseteo para volver a voltear
+      console.log("tarjetas flipeadas", document.querySelectorAll(".is-flipped")[0].innerText)
+      
+       setTimeout(()=>{
+        let flippedCards = document.querySelectorAll(".is-flipped")
+        flippedCards.forEach(card => card.remove())
+         
           document.querySelector(".ok-message").remove()
-        flipNum = [] 
-        }, 2000)
        
-    }else if((text !== this.innerText) && isFlip){
-        text = ""
-        messageContainer.innerHTML += `
-           <h1 class="failed-message">sorry not match!</h1>
-           `
-           console.log( messageContainer)
-        setTimeout(()=>{
-           
-            // alert("incorrecto")
-         //dentro del dom tomo todos los elementos y le elimino la clase 
-         //is-flipped a aquellos que tienen el is-flipped
-            let flippedCards = document.querySelectorAll(".is-flipped")
-           console.log(flippedCards)
-            flippedCards.forEach( card => card.classList.remove("is-flipped"))
-
-            document.querySelector(".failed-message").remove()
-           //reseteo para volver a voltear
-         flipNum = [] 
-          console.log("incorrecto", flippedCards.length)
-            
         }, 2000)
-    }
 
-     
-  });
+  }else{
+    console.log("mal")
+    messageContainer.innerHTML += `
+            <h1 class="failed-message">sorry not match!</h1>
+        `
+    setTimeout(()=>{
+               
+    let flippedCards = document.querySelectorAll(".is-flipped")
+    console.log(flippedCards)
+    flippedCards.forEach( card => card.classList.remove("is-flipped"))
+    document.querySelector(".failed-message").remove()
+            
+                }, 2000)
+  
+   }
+      
+       
+    }else{
+      return;
+    }
+  } 
+  })
   
 
 });
+
