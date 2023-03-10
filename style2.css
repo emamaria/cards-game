@@ -6,6 +6,8 @@ body {
    z-index: 1;
 }
 
+
+
 .failed-message{
   text-align: center;
   background-color: white;
@@ -39,6 +41,7 @@ body {
 /*   border: 1px solid #CCC; */
   margin: 40px 0;
   perspective: 600px;
+  
 }
 
 .card {
@@ -49,6 +52,8 @@ body {
   transform-style: preserve-3d;
   transform-origin: center right;
   transition: transform 1s;
+  
+ 
 }
 
 .card.is-flipped {
@@ -69,11 +74,15 @@ body {
 
 .card__face--front {
   background: crimson;
+ 
+ 
 }
 
 .card__face--back {
   background: slateblue;
   transform: rotateY(180deg);
+
+ 
 }
 
 .cards-container{

@@ -171,9 +171,11 @@ function pcTurn(){
 
   let leftCards =  document.querySelectorAll('.card');
 
+  let leftCardsCopy =  [...leftCards]
+
   console.log("randon left cards", leftCards,leftCards.length)
   //para tener en cuenta el 0 del array y me cuente de 0 al último elmento del array 
-  let leftCardsPlusOne = leftCards.length + 1
+  let leftCardsPlusOne = leftCardsCopy.length + 1
 
   //para que salga en random de 0 al ultimo número de posicion sumo 1 a la longitud del array
 
@@ -184,6 +186,64 @@ function pcTurn(){
   let randomCardPosition = Math.floor(Math.random() * randomNum);
 
   console.log("posicion  cartas aleatorias pc", randomCardPosition )
+
+ let card1 = leftCardsCopy[randomCardPosition]
+
+ card1.classList.add('is-flipped');
+
+ console.log("carta 1", card1)
+
+ let card1Type = card1.innerText
+ 
+ console.log("tipo tarjeta 1", card1Type)
+
+ leftCardsCopy.splice(randomCardPosition, 1)
+      
+ console.log("removed array length", leftCardsCopy.length)
+
+ let leftCardsCopyPlusOne = leftCardsCopy.length + 1
+
+ let randomNumSecond =  leftCardsCopyPlusOne + 1
+
+ console.log("second random length", randomNumSecond)
+
+ let randomCardPosition1 = Math.floor(Math.random() * randomNumSecond);
+
+ let card2 = leftCardsCopy[randomCardPosition1]
+
+ card2.classList.add('is-flipped');
+
+ console.log("carta 2", card2)
+
+ let card2Type = card2.innerText
+
+ if(card1Type === card2Type){
+
+  setTimeout(()=>{
+    let flippedCards = document.querySelectorAll(".is-flipped")
+    flippedCards.forEach(card => card.remove())
+     
+      // document.querySelector(".ok-message").remove()
+      //turno pc
+   
+    }, 2000)
+
+   
+
+ }else{
+
+  setTimeout(()=>{
+               
+    let flippedCards = document.querySelectorAll(".is-flipped")
+    console.log(flippedCards)
+    flippedCards.forEach( card => card.classList.remove("is-flipped"))
+    // document.querySelector(".failed-message").remove()
+  
+                }, 2000)
+
+ }
+ 
+
 
 
 
