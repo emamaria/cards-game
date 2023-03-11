@@ -60,25 +60,48 @@ shuffledCards.forEach(card =>{
 }
   )
 
-
+let user = prompt("what´s your name?")
 
 let messageContainer = document.querySelector(".message-container")
 
+function playerTurn(name){
 
+  if(name === "pc"){
+    messageContainer.innerHTML += `
+  <h1 id="pc-name">${name} turn!</h1>
+  `
+  }else{
+    messageContainer.innerHTML += `
+    <h1 id="user-name">${name} turn! click two cards</h1>
+    `
+  }
+  
+}
+
+function removePlayerTurn(name){
+  if(name === "pc"){
+    const element = document.getElementById("pc-name"); 
+    element.remove();
+  }else{
+    const element = document.getElementById("user-name");
+    element.remove();
+  }
+
+    }
 
 var cards = document.querySelectorAll('.card');
 // cuando le das la vuelta, se añade el is-flipped true
 
-  cards.forEach((card)=>{
-   
 
-   
+playerTurn(user)
+
+  cards.forEach((card)=>{
    
     
     card.addEventListener( 'click', function() {
 
       
-
+      
       console.log("tarjetas con flip length", document.querySelectorAll(".is-flipped").length)
       if(document.querySelectorAll(".is-flipped").length < 2){
       card.classList.add('is-flipped');
@@ -100,7 +123,7 @@ var cards = document.querySelectorAll('.card');
         let flippedCards = document.querySelectorAll(".is-flipped")
         // cards.forEach( card => card.classList.add('block-click'))
         messageContainer.innerHTML += `
-        <h1 class="ok-message">Great!</h1>
+        <h1 class="ok-message">Great!Choose cards more</h1>
         `
 
         setTimeout(() => {
@@ -133,8 +156,11 @@ var cards = document.querySelectorAll('.card');
     console.log(flippedCards)
     flippedCards.forEach( card => card.classList.remove("is-flipped"))
     document.querySelector(".failed-message").remove()
+  
       //turno pc
     setTimeout(()=>{
+      removePlayerTurn(user)
+      playerTurn("pc")
       pcTurn()
     }, 2000)
     
@@ -235,7 +261,7 @@ console.log("posicion random", randomCardPosition )
     let flippedCards = document.querySelectorAll(".is-flipped")
 
     messageContainer.innerHTML += `
-    <h1 class="ok-message">Great!</h1>
+    <h1 class="ok-message">Great! Choose two cards more!</h1>
     `
 
     setTimeout(()=>{
@@ -271,6 +297,8 @@ console.log("posicion random", randomCardPosition )
     flippedCards.forEach( card => card.classList.remove("is-flipped"))
     document.querySelector(".failed-message").remove()
     leftCards.forEach( card => card.classList.remove('block-click'))
+    removePlayerTurn("pc")
+    playerTurn(user)
    }, 2000)
    
   
@@ -356,7 +384,7 @@ console.log("posicion random", randomCardPosition )
   let flippedCards = document.querySelectorAll(".is-flipped")
 
   messageContainer.innerHTML += `
-  <h1 class="ok-message">Great!</h1>
+  <h1 class="ok-message">Great!Choose two cards more!</h1>
   `
   
   setTimeout(()=>{

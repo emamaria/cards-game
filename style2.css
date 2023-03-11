@@ -118,3 +118,29 @@ body {
 .block-click{
   pointer-events:none;
 }
+
+
+#user-name{
+  position: fixed;
+  top: 20px;
+  background: yellow;
+  color: purple;
+  font-weight: 10px;
+  left: 20px;
+  padding: 20px;
+  border-radius: 20px;
+  z-index: 4;
+}
+
+#pc-name{
+  position: fixed;
+  top: 20px;
+  background: yellow;
+  color: purple;
+  font-weight: 10px;
+  right: 20px;
+  padding: 20px;
+  border-radius: 20px;
+  z-index: 4;
+}
+
