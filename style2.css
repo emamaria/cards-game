@@ -13,12 +13,13 @@ body {
   background-color: white;
   font-size: 40px;
   font-weight: bold;
-  position: absolute;
+  position: fixed;
   padding: 20px;
   border-radius: 15px;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  z-index: 4;
 }
 
 .ok-message{
@@ -26,12 +27,13 @@ body {
   background-color: white;
   font-size: 40px;
   font-weight: bold;
-  position: absolute;
+  position: fixed;
   padding: 20px;
   border-radius: 15px;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  z-index: 4;
 }
 
 .scene {

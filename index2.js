@@ -93,31 +93,42 @@ var cards = document.querySelectorAll('.card');
     let card2 = document.querySelectorAll(".is-flipped")[1].innerText
   if(card1 === card2){
     console.log("bien")
-     messageContainer.innerHTML += `
-      <h1 class="ok-message">Great!</h1>
-      `
+  
       console.log("tarjetas flipeadas", document.querySelectorAll(".is-flipped")[0].innerText)
       
        setTimeout(()=>{
         let flippedCards = document.querySelectorAll(".is-flipped")
-        flippedCards.forEach(card => card.remove())
+        messageContainer.innerHTML += `
+        <h1 class="ok-message">Great!</h1>
+        `
+
+        setTimeout(() => {
+          flippedCards.forEach(card => card.remove())
          
           document.querySelector(".ok-message").remove()
           //turno pc
           setTimeout(()=>{
             pcTurn()
           }, 2000)
+          
+        }, 2000);
+       
        
         }, 2000)
 
   }else{
     console.log("mal")
-    messageContainer.innerHTML += `
-            <h1 class="failed-message">sorry not match!</h1>
-        `
+   
     setTimeout(()=>{
                
     let flippedCards = document.querySelectorAll(".is-flipped")
+
+    messageContainer.innerHTML += `
+    <h1 class="failed-message">sorry not match!</h1>
+`
+
+  setTimeout(() => {
+
     console.log(flippedCards)
     flippedCards.forEach( card => card.classList.remove("is-flipped"))
     document.querySelector(".failed-message").remove()
@@ -125,6 +136,9 @@ var cards = document.querySelectorAll('.card');
     setTimeout(()=>{
       pcTurn()
     }, 2000)
+    
+  }, 2000);
+   
             
                 }, 2000)
   
@@ -173,11 +187,11 @@ function pcTurn(){
 
   let leftCardsCopy =  [...leftCards]
  
-  let leftCardsPlusOne = leftCardsCopy.length 
+  let leftCardsMinusOne = leftCardsCopy.length - 1 
 
   //para que salga en random de 0 al ultimo número de posicion sumo 1 a la longitud del array
 
-  let randomNum =  leftCardsPlusOne + 1;
+  let randomNum =  leftCardsMinusOne + 1;
 
   let randomCardPosition = Math.floor(Math.random() * randomNum);
 
@@ -193,9 +207,9 @@ console.log("posicion random", randomCardPosition )
  leftCardsCopy.splice(randomCardPosition, 1)
       
 
- let leftCardsCopyPlusOne = leftCardsCopy.length 
+ let leftCardsCopyMinusOne = leftCardsCopy.length - 1
 
- let randomNumSecond =  leftCardsCopyPlusOne + 1
+ let randomNumSecond =  leftCardsCopyMinusOne + 1
 
  let randomCardPosition1 = Math.floor(Math.random() * randomNumSecond);
 
@@ -215,10 +229,21 @@ console.log("posicion random", randomCardPosition )
  if(card1Type === card2Type){
 
   setTimeout(()=>{
+
+   
     let flippedCards = document.querySelectorAll(".is-flipped")
-    flippedCards.forEach(card => card.remove())
+
+    messageContainer.innerHTML += `
+    <h1 class="ok-message">Great!</h1>
+    `
+
+    setTimeout(()=>{
+
+      flippedCards.forEach(card => card.remove())
      
-      // document.querySelector(".ok-message").remove()
+      document.querySelector(".ok-message").remove()
+    }, 2000)
+    
       //turno pc
    
     }, 2000)
@@ -228,11 +253,21 @@ console.log("posicion random", randomCardPosition )
  }else{
 
   setTimeout(()=>{
+
                
     let flippedCards = document.querySelectorAll(".is-flipped")
+
+    messageContainer.innerHTML += `
+    <h1 class="failed-message">sorry not match!</h1>
+`
+   setTimeout(()=>{
+
     console.log(flippedCards)
     flippedCards.forEach( card => card.classList.remove("is-flipped"))
-    // document.querySelector(".failed-message").remove()
+    document.querySelector(".failed-message").remove()
+
+   }, 2000)
+   
   
                 }, 2000)
 
@@ -258,13 +293,13 @@ console.log("posicion random", randomCardPosition )
 
   console.log("randon left cards", leftCards,leftCards.length)
  
-  let leftCardsPlusOne = leftCardsCopy.length
+  let leftCardsMinusOne = leftCardsCopy.length - 1
 
   //para que salga en random de 0 al ultimo número de posicion sumo 1 a la longitud del array
 
-  let randomNum =  leftCardsPlusOne + 1;
+  let randomNum =  leftCardsMinusOne + 1;
 
-  console.log("tarjetas que quedan mas 1", leftCardsPlusOne)
+  console.log("tarjetas que quedan mas 1", leftCardsMinusOne)
 
   let randomCardPosition = Math.floor(Math.random() * randomNum);
 
@@ -311,10 +346,20 @@ console.log("posicion random", randomCardPosition )
 
 
  setTimeout(()=>{
+
+ 
   let flippedCards = document.querySelectorAll(".is-flipped")
-  flippedCards.forEach(card => card.remove())
+
+  messageContainer.innerHTML += `
+  <h1 class="ok-message">Great!</h1>
+  `
+  
+  setTimeout(()=>{
+    flippedCards.forEach(card => card.remove())
    
-    // document.querySelector(".ok-message").remove()
+    document.querySelector(".ok-message").remove()
+  }, 2000)
+
     //turno pc
  
   }, 2000)
