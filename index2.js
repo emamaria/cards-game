@@ -123,7 +123,7 @@ playerTurn(user)
         let flippedCards = document.querySelectorAll(".is-flipped")
         // cards.forEach( card => card.classList.add('block-click'))
         messageContainer.innerHTML += `
-        <h1 class="ok-message">Great!Choose cards more</h1>
+        <h1 class="ok-message">Great!Choose two cards more</h1>
         `
 
         setTimeout(() => {
