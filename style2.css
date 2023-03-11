@@ -114,3 +114,7 @@ body {
  
  
 }
+
+.block-click{
+  pointer-events:none;
+}
