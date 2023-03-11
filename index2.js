@@ -98,7 +98,7 @@ var cards = document.querySelectorAll('.card');
       
        setTimeout(()=>{
         let flippedCards = document.querySelectorAll(".is-flipped")
-        cards.forEach( card => card.classList.add('block-click'))
+        // cards.forEach( card => card.classList.add('block-click'))
         messageContainer.innerHTML += `
         <h1 class="ok-message">Great!</h1>
         `
@@ -108,9 +108,9 @@ var cards = document.querySelectorAll('.card');
          
           document.querySelector(".ok-message").remove()
           //turno pc
-          setTimeout(()=>{
-            pcTurn()
-          }, 2000)
+          // setTimeout(()=>{
+          //   pcTurn()
+          // }, 2000)
           
         }, 2000);
        
@@ -244,7 +244,9 @@ console.log("posicion random", randomCardPosition )
      
       document.querySelector(".ok-message").remove()
 
-      leftCards.forEach( card => card.classList.remove('block-click'))
+      pcTurn()
+
+      // leftCards.forEach( card => card.classList.remove('block-click'))
     }, 2000)
     
       //turno pc
@@ -361,7 +363,8 @@ console.log("posicion random", randomCardPosition )
     flippedCards.forEach(card => card.remove())
    
     document.querySelector(".ok-message").remove()
-    leftCards.forEach( card => card.classList.remove('block-click'))
+    pcTurn()
+    // leftCards.forEach( card => card.classList.remove('block-click'))
   }, 2000)
 
     //turno pc
