@@ -150,3 +150,22 @@ body {
   margin-top: 60px;
 }
 
+#userPlayer{
+text-align: center;
+text-transform: uppercase;
+}
+
+#pcPlayer{
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.game-puprpose{
+ 
+  text-align: center;
+  font-weight: bold;
+}
+
+h1.game-puprpose{
+  padding-top: 20px;
+}

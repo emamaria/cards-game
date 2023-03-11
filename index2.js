@@ -5,6 +5,20 @@
 
 let time =  []
 
+let playerUser = 0
+
+let playerPc = 0
+
+
+
+function playersPointPanel(user){
+document.querySelector(".players-state").innerHTML += `
+
+<h1 id="userPlayer">${user}<p>${playerUser}</p></h1>
+<h1 id="pcPlayer">pc<p>${playerPc}</p></h1>
+
+`
+}
 
 
 
@@ -32,6 +46,8 @@ let shuffledCards = cardsList
     .map(({ value }) => value)
    
 console.log(shuffledCards)
+
+
 
 let cardsContainer = document.querySelector(".cards-container")
 
@@ -68,11 +84,11 @@ function playerTurn(name){
 
   if(name === "pc"){
     messageContainer.innerHTML += `
-  <h1 id="pc-name">${name} turn!</h1>
+  <h1 id="pc-name">${name[0].toUpperCase()}${name.substring(1)} turn!</h1>
   `
   }else{
     messageContainer.innerHTML += `
-    <h1 id="user-name">${name} turn! click two cards</h1>
+    <h1 id="user-name">${name[0].toUpperCase()}${name.substring(1)} turn! click two cards</h1>
     `
   }
   
@@ -92,8 +108,11 @@ function removePlayerTurn(name){
 var cards = document.querySelectorAll('.card');
 // cuando le das la vuelta, se añade el is-flipped true
 
+setTimeout(() => {
+  playerTurn(user)
+  playersPointPanel(user)
+}, 1000);
 
-playerTurn(user)
 
   cards.forEach((card)=>{
    
@@ -125,7 +144,10 @@ playerTurn(user)
         messageContainer.innerHTML += `
         <h1 class="ok-message">Great!Choose two cards more</h1>
         `
+        playerUser+=1
+        document.querySelector("#userPlayer p").textContent = playerUser
 
+        console.log("puntos usuario", playerUser)
         setTimeout(() => {
           flippedCards.forEach(card => card.remove())
          
@@ -263,7 +285,10 @@ console.log("posicion random", randomCardPosition )
     messageContainer.innerHTML += `
     <h1 class="ok-message">Great! Choose two cards more!</h1>
     `
+    playerPc+=1
 
+    document.querySelector("#pcPlayer p").textContent = playerPc
+    console.log("puntos pc",  playerPc)
     setTimeout(()=>{
 
       flippedCards.forEach(card => card.remove())
@@ -386,7 +411,10 @@ console.log("posicion random", randomCardPosition )
   messageContainer.innerHTML += `
   <h1 class="ok-message">Great!Choose two cards more!</h1>
   `
-  
+  playerPc+=1
+  document.querySelector("#pcPlayer p").textContent = playerPc
+
+  console.log("puntos pc", playerPc )
   setTimeout(()=>{
     flippedCards.forEach(card => card.remove())
    
