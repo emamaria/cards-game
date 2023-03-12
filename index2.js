@@ -1,12 +1,11 @@
 
 
 
-
 let playerUser = 0
 
 let playerPc = 0
 
-
+let totalCards = 52;
 
 function playersPointPanel(user){
 document.querySelector(".players-state").innerHTML += `
@@ -15,6 +14,30 @@ document.querySelector(".players-state").innerHTML += `
 <h1 id="pcPlayer">pc<p>${playerPc}</p></h1>
 
 `
+}
+
+function gameEndingMessage(player, leftCars){
+
+  if(leftCars === 2){
+     if(player !== user ){
+      playerUser+=1
+     }else if(player === "pc"){
+      playerPc+=1
+     }
+
+     if(playerUser > playerPc){
+      body.innerHTML = `<div class="match-end fade-in-image"><h1>${player} wins!!</h1></div>`
+     }else if(playerPc > playerUser){
+      body.innerHTML = `<div class="match-end fade-in-image"><h1>${player} wins!!</h1></div>`
+     }else if(playerUser === playerPc){
+      body.innerHTML = `<div  class="match-end fade-in-image"><h1>Draw!</h1></div>`
+     }
+
+      return;
+
+  }
+
+
 }
 
 
@@ -75,12 +98,38 @@ shuffledCards.forEach(card =>{
 
 let user = prompt("what´s your name?")
 
-alert(`Hi ${user[0].toUpperCase()}${user.substring(1)}❤! 
-This is a good game to train your memory!
-In this game, the player who accumulates more pairs of same numbers or letters cards wins.You are playing agains the pc.
-Each player must flip two cards in their turn.If the player gets two matched cards, can repeat turn and flip two more cards.
-The game ends when there are no more cards letf on the screen.
-Click accept to start the game.You start first, good luck ${user[0].toUpperCase()}${user.substring(1)}😉!`)
+function returnInthisCase(){
+  if(user.toLowerCase() === "pc"){
+    user = prompt("Tell me any name except, pc!")
+    if(user.toLowerCase() === "pc"){
+      alert("You can´t play this game, sorry!")
+
+      // return new Error("End")
+       
+   }
+  }
+}
+
+returnInthisCase()
+
+
+ async function returAccordingToUserName(){
+
+  if(user.toLowerCase() === "pc"){
+    return await location.reload()
+  }else{
+  alert(`Hi ${user[0].toUpperCase()}${user.substring(1)}❤! 
+  This is a good game to train your memory!
+  In this game, the player who accumulates more pairs of same numbers or letters cards wins.You are playing agains the pc.
+  Each player must flip two cards in their turn.If the player gets two matched cards, can repeat turn and flip two more cards.
+  The game ends when there are no more cards letf on the screen.
+  Click accept to start the game.You start first, good luck ${user[0].toUpperCase()}${user.substring(1)}😉!`)
+  }
+}
+
+returAccordingToUserName()
+
+
 
 let messageContainer = document.querySelector(".message-container")
 
@@ -123,7 +172,7 @@ setTimeout(() => {
     
     card.addEventListener( 'click', function() {
 
-      
+      let player = user
       
       console.log("tarjetas con flip length", document.querySelectorAll(".is-flipped").length)
       if(document.querySelectorAll(".is-flipped").length < 2){
@@ -144,6 +193,10 @@ setTimeout(() => {
       
        setTimeout(()=>{
         let flippedCards = document.querySelectorAll(".is-flipped")
+
+        console.log("tarjetas que quedan", cards.length)
+
+        gameEndingMessage(player, totalCards)
     
         messageContainer.innerHTML += `
         <h1 class="ok-message">Great!Choose two more cards!</h1>
@@ -156,6 +209,8 @@ setTimeout(() => {
           flippedCards.forEach(card => card.remove())
          
           document.querySelector(".ok-message").remove()
+
+          totalCards-=2
           
         }, 2000);
        
@@ -206,6 +261,8 @@ setTimeout(() => {
 
 
 function pcTurn(){
+
+  let player = "pc"
 
  let randomOrMatch = Math.floor(Math.random() * 5);
 
@@ -261,6 +318,10 @@ console.log("posicion random", randomCardPosition )
    
     let flippedCards = document.querySelectorAll(".is-flipped")
 
+    console.log("tarjetas que quedan", leftCards.length)
+
+    gameEndingMessage(player, totalCards)
+
     messageContainer.innerHTML += `
     <h1 class="ok-message">Great! Choose two more cards!</h1>
     `
@@ -273,6 +334,8 @@ console.log("posicion random", randomCardPosition )
       flippedCards.forEach(card => card.remove())
      
       document.querySelector(".ok-message").remove()
+
+      totalCards-=2
 
       pcTurn()
 
@@ -373,6 +436,10 @@ console.log("posicion random", randomCardPosition )
  
   let flippedCards = document.querySelectorAll(".is-flipped")
 
+  console.log("tarjetas que quedan", leftCards.length)
+
+  gameEndingMessage(player, totalCards)
+
   messageContainer.innerHTML += `
   <h1 class="ok-message">Great!Choose two more cards!</h1>
   `
@@ -384,6 +451,8 @@ console.log("posicion random", randomCardPosition )
     flippedCards.forEach(card => card.remove())
    
     document.querySelector(".ok-message").remove()
+
+    totalCards-=2
     pcTurn()
    
   }, 2000)
