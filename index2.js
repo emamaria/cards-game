@@ -1,9 +1,6 @@
 
 
-// creo un array de las cartas de assets y uso ese array para mapear y 
-// añadir los cambios
 
-let time =  []
 
 let playerUser = 0
 
@@ -106,7 +103,7 @@ function removePlayerTurn(name){
     }
 
 var cards = document.querySelectorAll('.card');
-// cuando le das la vuelta, se añade el is-flipped true
+
 
 setTimeout(() => {
   playerTurn(user)
@@ -140,7 +137,7 @@ setTimeout(() => {
       
        setTimeout(()=>{
         let flippedCards = document.querySelectorAll(".is-flipped")
-        // cards.forEach( card => card.classList.add('block-click'))
+    
         messageContainer.innerHTML += `
         <h1 class="ok-message">Great!Choose two cards more</h1>
         `
@@ -152,10 +149,6 @@ setTimeout(() => {
           flippedCards.forEach(card => card.remove())
          
           document.querySelector(".ok-message").remove()
-          //turno pc
-          // setTimeout(()=>{
-          //   pcTurn()
-          // }, 2000)
           
         }, 2000);
        
@@ -179,7 +172,6 @@ setTimeout(() => {
     flippedCards.forEach( card => card.classList.remove("is-flipped"))
     document.querySelector(".failed-message").remove()
   
-      //turno pc
     setTimeout(()=>{
       removePlayerTurn(user)
       playerTurn("pc")
@@ -204,33 +196,16 @@ setTimeout(() => {
 });
 
 
-//jugada pc
 
-//primero hago aleatoriamente que salga 0 o 1 si sale 1 el pc da vueltas
-//a dos cartas aleatoriamente si sale 0 toma dos iguales , durante el 
-//juego de pc desactivar click de las cartas una vez terminado, activar
 
 function pcTurn(){
 
-  //para que la probailidad de acertar por pate del pc sea más baja pongo
-  //a un 25% de posibilidad de acertar poniendo 5 numeros si 0 ó 1 ó  2 ó 3
-  //es aleatorio si es 4 encuentra la pareja
  let randomOrMatch = Math.floor(Math.random() * 5);
 
- console.log("random", randomOrMatch)
 
- //tiene probabilidad de 0 1 ó 2
  if(randomOrMatch <= 3){
    
-  console.log("aleatorio")
-
-  //miro el numero de tarjetas que queda en dom los tomo miro cuantos son con 
-  //length y sumo 1 .con ese length + 1 hago un ramdon que me saque de 0 a length + uno
-  //lo busco del array y lo saco y lo almaceno en variable llamado carta1 y le doy la vuelta luego con el 
-  //array de cartas que queda hago otro random entre 0 y ese array length mas uno y segun la posicion que salga le doy la
-  //vuelta y almaceno ese
-  //carta segun la posicion en que este en una variable y comparo el innerText si es igual los elimino
-  //si no les vuelvo a voltear
+  
 
   let leftCards =  document.querySelectorAll('.card');
 
@@ -238,7 +213,6 @@ function pcTurn(){
  
   let leftCardsMinusOne = leftCardsCopy.length - 1 
 
-  //para que salga en random de 0 al ultimo número de posicion sumo 1 a la longitud del array
 
   let randomNum =  leftCardsMinusOne + 1;
 
@@ -247,7 +221,7 @@ function pcTurn(){
 console.log("cartas que quedan", leftCards)
 console.log("posicion random", randomCardPosition )
  let card1 = leftCardsCopy[randomCardPosition]
-//otra vez error not read property of undefined
+
  card1.classList.add('is-flipped');
 
  let card1Type = card1.innerText
@@ -266,13 +240,11 @@ console.log("posicion random", randomCardPosition )
 
 
  setTimeout(()=>{
-      //debo añadir el is-flipped al dom real no a la copia
+     
     card2.classList.add('is-flipped');
  },1000)
 
- //card2.lastElementChild.alt
  
- ///aqui pasa algo
  let card2Type = card2.innerText
 
  if(card1Type === card2Type){
@@ -297,10 +269,8 @@ console.log("posicion random", randomCardPosition )
 
       pcTurn()
 
-      // leftCards.forEach( card => card.classList.remove('block-click'))
     }, 2000)
-    
-      //turno pc
+  
    
     }, 2000)
 
@@ -337,9 +307,6 @@ console.log("posicion random", randomCardPosition )
 
  }else if(randomOrMatch === 4){
 
-  //busco en el array de cartas de forma aleatoria una carta miro el numeor que tiene le doy la vuelta
-  //y busco otra carta del mismo numero en el array de cartas y el primero que encuentre en el array
-  //le doy la vuelta y los elimino porque son iguales
   console.log("iguales")
 
 
@@ -353,7 +320,6 @@ console.log("posicion random", randomCardPosition )
  
   let leftCardsMinusOne = leftCardsCopy.length - 1
 
-  //para que salga en random de 0 al ultimo número de posicion sumo 1 a la longitud del array
 
   let randomNum =  leftCardsMinusOne + 1;
 
@@ -376,14 +342,6 @@ console.log("posicion random", randomCardPosition )
  console.log("left card copy length antes",leftCardsCopy.length)
 
    leftCardsCopy.splice(randomCardPosition, 1)
-
-  //busco de las tarjetas que quedan el mismo tipo que el que saqué en aleatorio
-  //y el primero que encuentre será el que haré flip y despues aliminare del deck
-  //para buscar el mismo en el array del dom debo buscar elemento con el mismo src
- 
-  // del  leftCardsCopy busco todos los elementos que tengan card1Type y de ahí
-  //miro el de la primera posicion que id tiene y voy al dom original y elimino 
-  //elemento de ese id
 
  
   console.log("left card copy length despues",leftCardsCopy.length)
@@ -420,10 +378,9 @@ console.log("posicion random", randomCardPosition )
    
     document.querySelector(".ok-message").remove()
     pcTurn()
-    // leftCards.forEach( card => card.classList.remove('block-click'))
+   
   }, 2000)
 
-    //turno pc
  
   }, 2000)
 
