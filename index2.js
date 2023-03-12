@@ -36,7 +36,9 @@ function gameEndingMessage(player, leftCars){
       cardsContainer.innerHTML = `<div  class="match-end fade-in-image"><h1>Draw!🤔</h1></div>`
      }
 
-      return;
+    setTimeout(() => {
+      return location.reload()
+    }, 8000);
 
   }
 
