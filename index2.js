@@ -101,12 +101,13 @@ shuffledCards.forEach(card =>{
 }
   )
 
+  
 let user = prompt("what´s your name?")
 
 function returnInthisCase(){
-  if(user.toLowerCase() === "pc"){
-    user = prompt("Tell me any name except, pc!")
-    if(user.toLowerCase() === "pc"){
+  if(user?.toLowerCase() === "pc" || user.length === 0 ){
+    user = prompt(`Tell me another name !`)
+    if(user?.toLowerCase() === "pc" || user.length === 0){
       alert("You can´t play this game, sorry!")
 
       // return new Error("End")
@@ -117,10 +118,11 @@ function returnInthisCase(){
 
 returnInthisCase()
 
+console.log("posible usuario", user.length)
 
  async function returAccordingToUserName(){
 
-  if(user.toLowerCase() === "pc"){
+  if(user?.toLowerCase() === "pc" || user.length === 0){
     return await location.reload()
   }else{
   alert(`Hi ${user[0].toUpperCase()}${user.substring(1)}❤! 
