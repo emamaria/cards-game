@@ -4,7 +4,8 @@ body {
    margin: 0;
    position: relative;
    z-index: 1;
-   
+  
+  
 }
 
 
@@ -120,6 +121,13 @@ body {
   padding: 10px;
   border-radius: 20px;
   z-index: 4;
+  
+  text-align: center;
+
+ 
+
+  
+  
 }
 
 #pc-name{
@@ -131,6 +139,11 @@ body {
   padding: 10px;
   border-radius: 20px;
   z-index: 4;
+
+  text-align: center;
+  
+  
+  
 }
 
 .players-state{
@@ -140,16 +153,20 @@ body {
   justify-content: space-around;
   margin-top: 60px;
   color: white;
+ 
 }
 
 #userPlayer{
 text-align: center;
 text-transform: uppercase;
+
 }
 
 #pcPlayer{
   text-align: center;
   text-transform: uppercase;
+  
+
 }
 
 
@@ -173,4 +190,44 @@ font-size: 100px;
 text-align: center;
 display: flex;
 justify-content: center;
+flex-wrap: wrap;
+}
+
+@media (max-width:600px) {
+ 
+  .players-state{
+     
+    font-size: 20px;
+    flex-direction: column;
+   
+  }
+
+  #userPlayer{
+   font-size: 20px;
+  }
+
+  #pcPlayer{
+      font-size: 20px;
+  }
+
+  .game-puprpose{
+    font-size: 30px;
+  }
+
+  #pc-name{
+    font-size: 20px;
+  }
+
+  #user-name{
+    font-size: 20px;
+  }
+
+  .failed-message{
+    font-size: 20px;
+  }
+  
+  .ok-message{
+    font-size: 20px;
+  }
+
 }
