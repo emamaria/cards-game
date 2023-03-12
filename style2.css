@@ -186,7 +186,7 @@ h1.game-puprpose{
 }
 
 .match-end{
-font-size: 100px;
+font-size: 70px;
 text-align: center;
 display: flex;
 justify-content: center;
@@ -228,6 +228,10 @@ flex-wrap: wrap;
   
   .ok-message{
     font-size: 20px;
+  }
+
+  .match-end{
+    font-size: 30px;
   }
 
 }
