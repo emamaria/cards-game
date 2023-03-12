@@ -19,6 +19,8 @@ document.querySelector(".players-state").innerHTML += `
 function gameEndingMessage(player, leftCars){
 
   if(leftCars === 2){
+
+    messageContainer.remove()
      if(player !== user ){
       playerUser+=1
      }else if(player === "pc"){
@@ -26,11 +28,12 @@ function gameEndingMessage(player, leftCars){
      }
 
      if(playerUser > playerPc){
-      body.innerHTML = `<div class="match-end fade-in-image"><h1>${player} wins!!</h1></div>`
+
+      cardsContainer.innerHTML = `<div class="match-end fade-in-image"><h1>${player[0].toUpperCase()}${player.substring(1)} wins!!🤩</h1></div>`
      }else if(playerPc > playerUser){
-      body.innerHTML = `<div class="match-end fade-in-image"><h1>${player} wins!!</h1></div>`
+      cardsContainer.innerHTML = `<div class="match-end fade-in-image"><h1>${player[0].toUpperCase()}${player.substring(1)} wins!!🤩</h1></div>`
      }else if(playerUser === playerPc){
-      body.innerHTML = `<div  class="match-end fade-in-image"><h1>Draw!</h1></div>`
+      cardsContainer.innerHTML = `<div  class="match-end fade-in-image"><h1>Draw!🤔</h1></div>`
      }
 
       return;
