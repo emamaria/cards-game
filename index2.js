@@ -75,17 +75,24 @@ shuffledCards.forEach(card =>{
 
 let user = prompt("what´s your name?")
 
+alert(`Hi ${user[0].toUpperCase()}${user.substring(1)}❤! 
+This is a good game to train your memory!
+In this game, the player who accumulates more pairs of same numbers or letters cards wins.You are playing agains the pc.
+Each player must flip two cards in their turn.If the player gets two matched cards, can repeat turn and flip two more cards.
+The game ends when there are no more cards letf on the screen.
+Click accept to start the game.You start first, good luck ${user[0].toUpperCase()}${user.substring(1)}😉!`)
+
 let messageContainer = document.querySelector(".message-container")
 
 function playerTurn(name){
 
   if(name === "pc"){
     messageContainer.innerHTML += `
-  <h1 id="pc-name">${name[0].toUpperCase()}${name.substring(1)} turn!</h1>
+  <h1 id="pc-name">${name[0].toUpperCase()}${name.substring(1)}, choose two cards.</h1>
   `
   }else{
     messageContainer.innerHTML += `
-    <h1 id="user-name">${name[0].toUpperCase()}${name.substring(1)} turn! click two cards</h1>
+    <h1 id="user-name">${name[0].toUpperCase()}${name.substring(1)}, click two cards.</h1>
     `
   }
   
@@ -139,7 +146,7 @@ setTimeout(() => {
         let flippedCards = document.querySelectorAll(".is-flipped")
     
         messageContainer.innerHTML += `
-        <h1 class="ok-message">Great!Choose two cards more</h1>
+        <h1 class="ok-message">Great!Choose two more cards!</h1>
         `
         playerUser+=1
         document.querySelector("#userPlayer p").textContent = playerUser
@@ -163,7 +170,7 @@ setTimeout(() => {
     let flippedCards = document.querySelectorAll(".is-flipped")
     cards.forEach( card => card.classList.add('block-click'))
     messageContainer.innerHTML += `
-    <h1 class="failed-message">sorry not match!</h1>
+    <h1 class="failed-message">Sorry not match</h1>
 `
 
   setTimeout(() => {
@@ -255,7 +262,7 @@ console.log("posicion random", randomCardPosition )
     let flippedCards = document.querySelectorAll(".is-flipped")
 
     messageContainer.innerHTML += `
-    <h1 class="ok-message">Great! Choose two cards more!</h1>
+    <h1 class="ok-message">Great! Choose two more cards!</h1>
     `
     playerPc+=1
 
@@ -284,7 +291,7 @@ console.log("posicion random", randomCardPosition )
     let flippedCards = document.querySelectorAll(".is-flipped")
 
     messageContainer.innerHTML += `
-    <h1 class="failed-message">sorry not match!</h1>
+    <h1 class="failed-message">Sorry not match</h1>
 `
    setTimeout(()=>{
 
@@ -367,7 +374,7 @@ console.log("posicion random", randomCardPosition )
   let flippedCards = document.querySelectorAll(".is-flipped")
 
   messageContainer.innerHTML += `
-  <h1 class="ok-message">Great!Choose two cards more!</h1>
+  <h1 class="ok-message">Great!Choose two more cards!</h1>
   `
   playerPc+=1
   document.querySelector("#pcPlayer p").textContent = playerPc
