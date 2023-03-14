@@ -5,6 +5,7 @@ let playerUser = 0
 
 let playerPc = 0
 
+
 let totalCards = 52;
 
 function playersPointPanel(user){
@@ -16,23 +17,39 @@ document.querySelector(".players-state").innerHTML += `
 `
 }
 
-function gameEndingMessage(player, leftCars){
+function gameEndingMessage(player, leftCars, playerPc, playerUser, user ){
 
   if(leftCars === 2){
 
     messageContainer.remove()
-     if(player !== user ){
-      playerUser+=1
-     }else if(player === "pc"){
+    
+     if(player.toLowerCase() === "pc" ){
       playerPc+=1
+     }else{
+      playerUser+=1
      }
-
+  
+     cardsContainer.classList.remove("cards-container")
+     cardsContainer.classList.add("cards-container2")
+     
      if(playerUser > playerPc){
+          if(user.toLowerCase() !== "you"){
+            cardsContainer.innerHTML = `<div class="match-end fade-in-image"><h1>${user[0].toUpperCase()}${user.substring(1)} wins!!🤩</h1></div>`
+          }else{
+            cardsContainer.innerHTML = `<div class="match-end fade-in-image"><h1>You win!!🤩</h1></div>`
+          }
+         
 
-      cardsContainer.innerHTML = `<div class="match-end fade-in-image"><h1>${player[0].toUpperCase()}${player.substring(1)} wins!!🤩</h1></div>`
-     }else if(playerPc > playerUser){
-      cardsContainer.innerHTML = `<div class="match-end fade-in-image"><h1>${player[0].toUpperCase()}${player.substring(1)} wins!!🤩</h1></div>`
-     }else if(playerUser === playerPc){
+     }
+     
+     if(playerPc > playerUser){
+
+       cardsContainer.innerHTML = `<div class="match-end fade-in-image"><h1> Pc wins!!🤩</h1></div>`
+      
+     }
+     
+     if(playerUser === playerPc){
+
       cardsContainer.innerHTML = `<div  class="match-end fade-in-image"><h1>Draw!🤔</h1></div>`
      }
 
@@ -102,11 +119,15 @@ shuffledCards.forEach(card =>{
   )
 
   
-let user = prompt("what´s your name?")
+let user = prompt("what´s your name?") || "you"
+
+if(user.length > 10){
+  user = `Mr/Mrs ${user[0]}`
+}
 
 function returnInthisCase(){
   if(user?.toLowerCase() === "pc" || user.length === 0 ){
-    user = prompt(`Tell me another name !`)
+    user = prompt(`Tell me another name !`) || "you"
     if(user?.toLowerCase() === "pc" || user.length === 0){
       alert("You can´t play this game, sorry!")
 
@@ -130,7 +151,7 @@ console.log("posible usuario", user.length)
   In this game, the player who accumulates more pairs of same numbers or letters cards wins.You are playing agains the pc.
   Each player must flip two cards in their turn.If the player gets two matched cards, can repeat turn and flip two more cards.
   The game ends when there are no more cards letf on the screen.
-  Click accept to start the game.You start first, good luck ${user[0].toUpperCase()}${user.substring(1)}😉!`)
+  Click accept to start the game.You start first, good luck!😊`)
   }
 }
 
@@ -188,9 +209,7 @@ setTimeout(() => {
        console.log("tarjeta", card)
 
       if(document.querySelectorAll(".is-flipped").length === 2){
-    console.log("hello")
-  console.log("tarjeta 1 flipeada", document.querySelectorAll(".is-flipped")[0].innerText)
-  console.log("tarjeta 2 flipeada", document.querySelectorAll(".is-flipped")[1].innerText)
+   
     let card1 = document.querySelectorAll(".is-flipped")[0].innerText
     let card2 = document.querySelectorAll(".is-flipped")[1].innerText
   if(card1 === card2){
@@ -203,8 +222,10 @@ setTimeout(() => {
 
         console.log("tarjetas que quedan", cards.length)
 
-        gameEndingMessage(player, totalCards)
-    
+        gameEndingMessage(player, totalCards, playerPc, playerUser,user)
+
+       
+        
         messageContainer.innerHTML += `
         <h1 class="ok-message">Great!Choose two more cards!</h1>
         `
@@ -327,7 +348,9 @@ console.log("posicion random", randomCardPosition )
 
     console.log("tarjetas que quedan", leftCards.length)
 
-    gameEndingMessage(player, totalCards)
+    gameEndingMessage(player, totalCards, playerPc, playerUser,user)
+
+  
 
     messageContainer.innerHTML += `
     <h1 class="ok-message">Great! Choose two more cards!</h1>
@@ -445,7 +468,7 @@ console.log("posicion random", randomCardPosition )
 
   console.log("tarjetas que quedan", leftCards.length)
 
-  gameEndingMessage(player, totalCards)
+  gameEndingMessage(player, totalCards, playerPc, playerUser, user)
 
   messageContainer.innerHTML += `
   <h1 class="ok-message">Great!Choose two more cards!</h1>

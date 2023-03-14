@@ -1,10 +1,10 @@
 body {
-   font-family: sans-serif;
+   font-family: Arial;
    background-color: #35654d;
    margin: 0;
    position: relative;
    z-index: 1;
-  
+ 
   
 }
 
@@ -96,7 +96,21 @@ body {
   position: absolute;
   z-index: 2;
   row-gap: 20px;
+  padding: 40px;
 }
+
+.cards-container2{
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  /* margin: 10px;
+  margin-top: 50px;
+  position: absolute;
+  z-index: 2;
+  row-gap: 20px; */
+}
+
 
 
 
@@ -171,7 +185,7 @@ text-transform: uppercase;
 
 
 h1.game-puprpose{
-  padding-top: 20px;
+  padding-top: 60px;
   text-align: center;
   font-weight: bold;
   color: white;
