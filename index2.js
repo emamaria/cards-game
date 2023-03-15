@@ -55,7 +55,7 @@ function gameEndingMessage(player, leftCars, playerPc, playerUser, user ){
 
     setTimeout(() => {
       return location.reload()
-    }, 8000);
+    }, 20000);
 
   }
 
