@@ -236,7 +236,7 @@ setTimeout(() => {
         setTimeout(() => {
           flippedCards.forEach(card => card.remove())
          
-          document.querySelector(".ok-message").remove()
+          document.querySelector(".ok-message")?.remove()
 
           totalCards-=2
           
@@ -363,7 +363,7 @@ console.log("posicion random", randomCardPosition )
 
       flippedCards.forEach(card => card.remove())
      
-      document.querySelector(".ok-message").remove()
+      document.querySelector(".ok-message")?.remove()
 
       totalCards-=2
 
@@ -480,7 +480,7 @@ console.log("posicion random", randomCardPosition )
   setTimeout(()=>{
     flippedCards.forEach(card => card.remove())
    
-    document.querySelector(".ok-message").remove()
+    document.querySelector(".ok-message")?.remove()
 
     totalCards-=2
     pcTurn()
