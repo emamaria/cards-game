@@ -132,7 +132,7 @@ body {
   color: purple;
   font-weight: 10px;
   left: 20%;
-  bottom: 30%;
+  top: 85%;
   padding: 10px;
   border-radius: 20px;
   z-index: 4;
@@ -151,7 +151,7 @@ body {
   color: purple;
   font-weight: 10px;
   right: 20%;
-  bottom: 30%;
+  top: 85%;
   padding: 10px;
   border-radius: 20px;
   z-index: 4;
