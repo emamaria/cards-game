@@ -208,7 +208,7 @@ flex-wrap: wrap;
 }
 
 @media (max-width:900px){
-  .scene{
+  /* .scene{
     width: 55px;
     height: 100px;
   }
@@ -220,7 +220,7 @@ flex-wrap: wrap;
 
   .ok-message, .failed-message{
     font-size: 1.2rem;
-  }
+  } */
 
   /* #pc-name, #user-name{
     font-size: 2rem;
