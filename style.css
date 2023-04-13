@@ -218,9 +218,13 @@ flex-wrap: wrap;
     height: 90px;
   }
 
-  #pc-name, #user-name, .ok-message, .failed-message{
+  .ok-message, .failed-message{
     font-size: 1.2rem;
   }
+
+  /* #pc-name, #user-name{
+    font-size: 2rem;
+  } */
 
   
 }
