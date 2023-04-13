@@ -207,6 +207,24 @@ justify-content: center;
 flex-wrap: wrap;
 }
 
+@media (max-width:900px){
+  .scene{
+    width: 55px;
+    height: 100px;
+  }
+
+  .card_face{
+    width: 45px;
+    height: 90px;
+  }
+
+  #pc-name, #user-name, .ok-message, .failed-message{
+    font-size: 1.2rem;
+  }
+
+  
+}
+
 @media (max-width:600px) {
  
   .players-state{
@@ -247,5 +265,7 @@ flex-wrap: wrap;
   .match-end{
     font-size: 30px;
   }
+
+ 
 
 }
